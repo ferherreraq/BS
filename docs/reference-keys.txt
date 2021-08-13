@@ -19,3 +19,10 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+introducción
+metodología
+marco-teórico
+resultados
+conclusiones
+bibliografía
+anexos
