@@ -53,6 +53,17 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 
 
 
@@ -76,9 +87,19 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
 <li class="chapter" data-level="2" data-path="metodología.html"><a href="metodología.html"><i class="fa fa-check"></i><b>2</b> Metodología</a></li>
 <li class="chapter" data-level="3" data-path="marco-teórico.html"><a href="marco-teórico.html"><i class="fa fa-check"></i><b>3</b> Marco teórico</a></li>
-<li class="chapter" data-level="4" data-path="resultados.html"><a href="resultados.html"><i class="fa fa-check"></i><b>4</b> Resultados</a></li>
+<li class="chapter" data-level="4" data-path="resultados.html"><a href="resultados.html"><i class="fa fa-check"></i><b>4</b> Resultados</a><ul>
+<li class="chapter" data-level="4.1" data-path="resultados.html"><a href="resultados.html#puntos-de-entrenamiento"><i class="fa fa-check"></i><b>4.1</b> Puntos de Entrenamiento</a></li>
+<li class="chapter" data-level="4.2" data-path="resultados.html"><a href="resultados.html#clasificación-supervisada"><i class="fa fa-check"></i><b>4.2</b> Clasificación Supervisada</a></li>
+<li class="chapter" data-level="4.3" data-path="resultados.html"><a href="resultados.html#grado-de-precisión-de-la-clasificación"><i class="fa fa-check"></i><b>4.3</b> Grado de Precisión de la Clasificación</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="resultados.html"><a href="resultados.html#overall-acuraccy-oa"><i class="fa fa-check"></i><b>4.3.1</b> Overall Acuraccy (OA)</a></li>
+<li class="chapter" data-level="4.3.2" data-path="resultados.html"><a href="resultados.html#índice-kappa"><i class="fa fa-check"></i><b>4.3.2</b> Índice Kappa</a></li>
+<li class="chapter" data-level="4.3.3" data-path="resultados.html"><a href="resultados.html#precisión-del-productor-y-del-usuario"><i class="fa fa-check"></i><b>4.3.3</b> Precisión del productor y del usuario</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="resultados.html"><a href="resultados.html#valores-obtenidos-de-la-clasificación-supervisada"><i class="fa fa-check"></i><b>4.4</b> Valores obtenidos de la Clasificación Supervisada</a></li>
+<li class="chapter" data-level="4.5" data-path="resultados.html"><a href="resultados.html#comparación-de-la-superficie-perdida"><i class="fa fa-check"></i><b>4.5</b> Comparación de la superficie perdida</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>5</b> Conclusiones</a></li>
-<li class="chapter" data-level="6" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i><b>6</b> Bibliografía</a></li>
+<li class="chapter" data-level="6" data-path="referencias-bibliográficas.html"><a href="referencias-bibliográficas.html"><i class="fa fa-check"></i><b>6</b> Referencias bibliográficas</a></li>
 <li class="chapter" data-level="7" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i><b>7</b> Anexos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -102,13 +123,30 @@
             <section class="normal" id="section-">
 <div id="metodología" class="section level1">
 <h1><span class="header-section-number">Capítulo 2</span> Metodología</h1>
-<p>En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:
--Forest
--Damaged Forest
--Water
+<div style="text-align: justify">
+<p>En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:</p>
+<ul>
+<li>Forest</li>
+<li>Damaged Forest</li>
+<li>Water</li>
+</ul>
 El proceso de clasificación supervisada fue realizado integramente en el code editor de Google Earth Engine (GEE), esta plataforma nos permite realizar todas las operaciones de una manera fácil y rápida, sin consumir recursos de nuestros ordenadores ya que todo el procesamiento es en la nube.
 Dentro de GEE, se elaboró el code para este proyecto (JavaScript) y posterior a esto se procedió a realizar la selección de puntos de entrenamiento (training points); luego a esto pudimos correr el algoritmo RF.
-Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).</p>
+Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).
+Metodología 1
+<div class="figure"><span style="display:block;" id="fig:pressure"></span>
+<img src="image/metod1.png" alt="*Metodología general*" width="100%" />
+<p class="caption">
+Figure 2.1: <em>Metodología general</em>
+</p>
+</div>
+Luego se procedió a realizar los puntos de entrenamiento estratégicamente basados en nuestra inspección visual rigurosa.
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="image/metod2.png" alt="*Selección de puntos*" width="100%" />
+<p class="caption">
+Figure 2.2: <em>Selección de puntos</em>
+</p>
+</div>
 </div>
             </section>
 
@@ -171,6 +209,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

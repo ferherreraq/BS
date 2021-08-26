@@ -53,6 +53,17 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 
 
 
@@ -76,9 +87,19 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
 <li class="chapter" data-level="2" data-path="metodología.html"><a href="metodología.html"><i class="fa fa-check"></i><b>2</b> Metodología</a></li>
 <li class="chapter" data-level="3" data-path="marco-teórico.html"><a href="marco-teórico.html"><i class="fa fa-check"></i><b>3</b> Marco teórico</a></li>
-<li class="chapter" data-level="4" data-path="resultados.html"><a href="resultados.html"><i class="fa fa-check"></i><b>4</b> Resultados</a></li>
+<li class="chapter" data-level="4" data-path="resultados.html"><a href="resultados.html"><i class="fa fa-check"></i><b>4</b> Resultados</a><ul>
+<li class="chapter" data-level="4.1" data-path="resultados.html"><a href="resultados.html#puntos-de-entrenamiento"><i class="fa fa-check"></i><b>4.1</b> Puntos de Entrenamiento</a></li>
+<li class="chapter" data-level="4.2" data-path="resultados.html"><a href="resultados.html#clasificación-supervisada"><i class="fa fa-check"></i><b>4.2</b> Clasificación Supervisada</a></li>
+<li class="chapter" data-level="4.3" data-path="resultados.html"><a href="resultados.html#grado-de-precisión-de-la-clasificación"><i class="fa fa-check"></i><b>4.3</b> Grado de Precisión de la Clasificación</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="resultados.html"><a href="resultados.html#overall-acuraccy-oa"><i class="fa fa-check"></i><b>4.3.1</b> Overall Acuraccy (OA)</a></li>
+<li class="chapter" data-level="4.3.2" data-path="resultados.html"><a href="resultados.html#índice-kappa"><i class="fa fa-check"></i><b>4.3.2</b> Índice Kappa</a></li>
+<li class="chapter" data-level="4.3.3" data-path="resultados.html"><a href="resultados.html#precisión-del-productor-y-del-usuario"><i class="fa fa-check"></i><b>4.3.3</b> Precisión del productor y del usuario</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="resultados.html"><a href="resultados.html#valores-obtenidos-de-la-clasificación-supervisada"><i class="fa fa-check"></i><b>4.4</b> Valores obtenidos de la Clasificación Supervisada</a></li>
+<li class="chapter" data-level="4.5" data-path="resultados.html"><a href="resultados.html#comparación-de-la-superficie-perdida"><i class="fa fa-check"></i><b>4.5</b> Comparación de la superficie perdida</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>5</b> Conclusiones</a></li>
-<li class="chapter" data-level="6" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i><b>6</b> Bibliografía</a></li>
+<li class="chapter" data-level="6" data-path="referencias-bibliográficas.html"><a href="referencias-bibliográficas.html"><i class="fa fa-check"></i><b>6</b> Referencias bibliográficas</a></li>
 <li class="chapter" data-level="7" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i><b>7</b> Anexos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -102,6 +123,190 @@
             <section class="normal" id="section-">
 <div id="resultados" class="section level1">
 <h1><span class="header-section-number">Capítulo 4</span> Resultados</h1>
+<div style="text-align: justify">
+<p>Utilizando las imágenes:</p>
+<ul>
+<li><p>Imagen correspondiente al año 2004 <em>(LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814</em></p></li>
+<li><p>Imagen correspondiente al año 2018
+<em>(LANDSAT/LC08/C01/T1_SR/LC08_003069_20180906)</em></p></li>
+</ul>
+<div id="puntos-de-entrenamiento" class="section level2">
+<h2><span class="header-section-number">4.1</span> Puntos de Entrenamiento</h2>
+Elaboramos la distribución de puntos de entrenamiento para hacer la correcta discriminación de las clases fijadas en nuestro trabajo <em>(forest, damaged forest, water)</em> como se muestra en la siguiente figura:
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="image/points.png" alt="*Puntos de Entrenamiento*" width="100%" />
+<p class="caption">
+Figure 4.1: <em>Puntos de Entrenamiento</em>
+</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>Clase</th>
+<th>Cantidad de puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Water</td>
+<td>267</td>
+</tr>
+<tr class="even">
+<td>Forest</td>
+<td>337</td>
+</tr>
+<tr class="odd">
+<td>Damaged Forest</td>
+<td>236</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="clasificación-supervisada" class="section level2">
+<h2><span class="header-section-number">4.2</span> Clasificación Supervisada</h2>
+<p>Las técnicas de clasificación de imágenes satelitales se utilizan para agrupar pixeles con valores similares en varias clases. En la clasificación supervisada, se parte con una serie clases previamente predefinidas (sitios de entrenamiento). El algoritmo de clasificación de imágenes usa los sitios de entrenamiento para identificar las coberturas de suelo en la imagen completa. Como sitios de entrenamiento se van a utilizar los polígonos empleados anteriormente para la obtención de los perfiles espectrales.</p>
+<p>El código realizado fue hecho dentro de la plataforma Google Earth Engine y lo pueden encontrar en el siguiente link:</p>
+<p>– <a href="https://code.earthengine.google.com/7883cf590175699625d1ccb88752cb79">Código Bahuaja Sonene - Gonzales y Herrera</a>.</p>
+Como su propio nombre indica, Random Forest consiste en una gran cantidad de árboles de decisión individuales que operan como un conjunto. Este algoritmo puede ser menos sensible al ruido y puede ser más eficiente que otros clasificadores no paramétricos de uso común, como las máquinas de soporte vectorial (Pelletier et al., 2016). Se han utilizado 1510 puntos ubicados uniformemente dentro de todo el área de estudio. El mapa de clasificación predicho mediante el modelo obtenido por el algoritmo Random Forest se muestra a continuación:
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="image/clasi.png" alt="*Clasificación de la imagen 2004*" width="100%" />
+<p class="caption">
+Figure 4.2: <em>Clasificación de la imagen 2004</em>
+</p>
+</div>
+</div>
+<div id="grado-de-precisión-de-la-clasificación" class="section level2">
+<h2><span class="header-section-number">4.3</span> Grado de Precisión de la Clasificación</h2>
+<p>La evaluación de precisión es el paso final en el análisis de los datos de teledetección. Ayuda a verificar la precisión de los resultados obtenidos. Se ha elegido la precisión general, el coeficiente Kappa y la precisión del productor y del usuario como evaluaciones cuantitativas para determinar la precisión final de la clasificación supervisada de la cubierta terrestre.</p>
+<div id="overall-acuraccy-oa" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Overall Acuraccy (OA)</h3>
+<p>La precisión general es la medida de precisión más simple y una de las más populares. Se calcula dividiendo el el número total de píxeles clasificados correctamente (es decir, la suma de la diagonal principal) por el número total de píxeles en la matriz de confusión (Congalton, 1991).</p>
+<p><span class="math display">\[
+Overall\ Accuracy\ (OA)=\frac{\sum{Diagonal}}{\sum{matrix}}
+\]</span></p>
+</div>
+<div id="índice-kappa" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Índice Kappa</h3>
+<p>Esta evaluación corrige la precisión general de las predicciones del modelo por la precisión que se espera que ocurra por casualidad:
+<span class="math display">\[
+Kappa\ (K)=\frac{Overall\ accuracy-Chance\ Agreement}{1-chance\ agreement}
+\]</span>
+<em>Overall Accuracy</em> = Determinado por la diagonal principal de la matriz de confusión</p>
+<p><em>Chance Agreement</em> = Suma del producto de los totales de cada fila y columna divididos por el número total de pixeles muestreados para cada clase.</p>
+</div>
+<div id="precisión-del-productor-y-del-usuario" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Precisión del productor y del usuario</h3>
+<p>Se produce un error de clasificación cuando a un pixel perteneciente a una clase se le asigna una clase distinta. La precisón del Productor mide errores de omisión, es decir, cuando se excluye un pixel de la categoría que está siendo evaluada. En cambio, la precisión del usuario mide los errores de comisión, esto es, cuando se incluye un pixel incorrectamente en la categoría que está siendo evaluada.</p>
+<p>La precisión del productor (PA) se obtiene de dividir el número de píxeles correctamente clasificados en cada categoría (diagonal principal de la matriz de confusión) por el número de píxeles de referencia de esa categoría (el total de la columna):
+<span class="math display">\[
+Productor\ accuracy\ (PA)=\frac{Diagonal}{\sum{col}}
+\]</span>
+Donde:</p>
+<ul>
+<li><em>Diagonal</em> = Valor de la columna perteneciente a la diagonal principal de la matriz de confusión</li>
+<li><em>∑col</em> = Suma de cada columna de la matriz de confusión</li>
+</ul>
+<p>Mientras que la precisión del usuario (UA) se calcula dividiendo el número de píxeles correctamente clasificados en cada categoría por el número total de píxeles que se clasificaron en esa categoría (el total de la fila):
+<span class="math display">\[
+User\ accuracy\ (UA)=\frac{Diagonal}{\sum{row}}
+\]</span>
+Donde:</p>
+<ul>
+<li><em>Diagonal</em> = Valor de la fila perteneciente a la diagonal principal de la matriz de confusión</li>
+<li><em>∑row</em> = Suma de cada fila de la matriz de confusión</li>
+</ul>
+</div>
+</div>
+<div id="valores-obtenidos-de-la-clasificación-supervisada" class="section level2">
+<h2><span class="header-section-number">4.4</span> Valores obtenidos de la Clasificación Supervisada</h2>
+<p>A continuación adjuntamos el grado de precisión alcanzados con la clasificación supervisada utilizando el algoritmo de Random Forest.</p>
+<ul>
+<li>Tabla de valores para la imagen del 2004</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Imagen 2004</th>
+<th>Resultado (R.F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OA</td>
+<td>0.97</td>
+</tr>
+<tr class="even">
+<td>Kappa</td>
+<td>0.95</td>
+</tr>
+<tr class="odd">
+<td>Producers Acuraccy</td>
+<td>0.95</td>
+</tr>
+<tr class="even">
+<td>Ucers Acuraccy</td>
+<td>0.96</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Tabla de valores para la imagen del 2018</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Imagen 2018</th>
+<th>Resultado (R.F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OA</td>
+<td>0.94</td>
+</tr>
+<tr class="even">
+<td>Kappa</td>
+<td>0.91</td>
+</tr>
+<tr class="odd">
+<td>Producers Acuraccy</td>
+<td>0.90</td>
+</tr>
+<tr class="even">
+<td>Ucers Acuraccy</td>
+<td>0.92</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comparación-de-la-superficie-perdida" class="section level2">
+<h2><span class="header-section-number">4.5</span> Comparación de la superficie perdida</h2>
+<p>Obtenida la clasificación, a continuación calculamos el área de las clases correspondientes para dar a mostrar de manera cuantitativa la varación en lo que respecta a cobertura vegetal; en la siguiente tabla podemos apreciar los valores hallados:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Área 2004 (km^2)</th>
+<th>Área 2018 (km^2)</th>
+<th>Variación (km^2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bosque</td>
+<td>6033.93</td>
+<td>5191.07</td>
+<td>-842-860</td>
+</tr>
+<tr class="even">
+<td>Bosque dañado</td>
+<td>333.04</td>
+<td>962.013</td>
+<td>+628.973</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
             </section>
 
@@ -164,6 +369,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

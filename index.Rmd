@@ -5,32 +5,173 @@ author: "Herrera Fernando, Gonzales Karen"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
+bibliography: book.bib
+csl: apa.csl
+nocite: '@*'
 ---
 
 # Introducción
+<div style="text-align: justify">
 La pérdida de la cobertura vegetal causada por las actividades antrópicas afecta directamente al clima, flora, fauna, suelo del lugar afectado. En el Parque Nacional Bahuaja Sonene; la perdida de cobertura vegetal es originado principalmente por actividades como la minera ilegal, deforestación para construír laboratorios del narcotráfico así como expansión de la frontera agrícola.
 En el presente trabajo usamos las técnicas de teledetección para calcular cuantitativamente el cambio y la pérdida de cobertura vegetal, se usa principalmente las imágenes de las misiones Landsat-5 y Landsat-8. Se realizó la clasificación tomando tres (3) clases (_forest, damaged_forest, water), añadido a esto se procedió a usar el algoritmo Random Forest (RF) dentro del servicio para editar códigos de Google Earth Engine (GEE). 
- 
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE, , results='markup', paged.print=TRUE}
+library(cptcity)
+library(raster)
+library(stars)
+library(sf)
+library(rgee)
+ee_Initialize("FHerrera")
+img1 <- ee$Image("LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814")
+geoviz <- list(bands = c("B3", "B2", "B1"),
+               min = 50,
+               max = 3000,
+               gamma = 1.4
+               )
+
+Map$setCenter(-70.4, -12.85, zoom = 10)
+Map$addLayer(img1, geoviz, "IMG_2004")
+```
+
+
+
 # Metodología
+<div style="text-align: justify">
 En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:
--Forest
--Damaged Forest
--Water
+
+* Forest
+* Damaged Forest
+* Water
+
 El proceso de clasificación supervisada fue realizado integramente en el code editor de Google Earth Engine (GEE), esta plataforma nos permite realizar todas las operaciones de una manera fácil y rápida, sin consumir recursos de nuestros ordenadores ya que todo el procesamiento es en la nube.
 Dentro de GEE, se elaboró el code para este proyecto (JavaScript) y posterior a esto se procedió a realizar la selección de puntos de entrenamiento (training points); luego a esto pudimos correr el algoritmo RF.
 Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).
+Metodología 1 
+```{r pressure, echo=FALSE, fig.cap="*Metodología general*", out.width = '100%'}
+knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/metod1.png")
+```
+Luego se procedió a realizar los puntos de entrenamiento estratégicamente basados en nuestra inspección visual rigurosa.
+```{r warning=FALSE,echo=FALSE, fig.cap="*Selección de puntos*", out.width = '100%'}
+knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/metod2.png")
+```
+
 
 # Marco teórico 
- 
+
 
 # Resultados
-Luego de la clasificación supervisada
+<div style="text-align: justify">
+Utilizando las imágenes:
+
+* Imagen correspondiente al año 2004  _(LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814_
+
+* Imagen correspondiente al año 2018 
+_(LANDSAT/LC08/C01/T1_SR/LC08_003069_20180906)_
+
+## Puntos de Entrenamiento
+Elaboramos la distribución de puntos de entrenamiento para hacer la correcta discriminación de las clases fijadas en nuestro trabajo *(forest, damaged forest, water)* como se muestra en la siguiente figura:
+```{r warning=FALSE,echo=FALSE, fig.cap="*Puntos de Entrenamiento*", out.width = '100%'}
+knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/points.png")
+```
+| Clase  | Cantidad de puntos |
+| ------------- | ------------- |
+| Water    | 267    |
+| Forest    | 337   |
+| Damaged Forest    | 236   |
+
+## Clasificación Supervisada
+Las técnicas de clasificación de imágenes satelitales se utilizan para agrupar pixeles con valores similares en varias clases. En la clasificación supervisada, se parte con una serie clases previamente predefinidas (sitios de entrenamiento). El algoritmo de clasificación de imágenes usa los sitios de entrenamiento para identificar las coberturas de suelo en la imagen completa. Como sitios de entrenamiento se van a utilizar los polígonos empleados anteriormente para la obtención de los perfiles espectrales.
+
+El código realizado fue hecho dentro de la plataforma Google Earth Engine y lo pueden encontrar en el siguiente link: 
+
+-- [Código Bahuaja Sonene - Gonzales y Herrera](https://code.earthengine.google.com/7883cf590175699625d1ccb88752cb79). 
+
+Como su propio nombre indica, Random Forest consiste en una gran cantidad de árboles de decisión individuales que operan como un conjunto. Este algoritmo puede ser menos sensible al ruido y puede ser más eficiente que otros clasificadores no paramétricos de uso común, como las máquinas de soporte vectorial (Pelletier et al., 2016). Se han utilizado 1510 puntos ubicados uniformemente dentro de todo el área de estudio. El mapa de clasificación predicho mediante el modelo obtenido por el algoritmo Random Forest se muestra a continuación:
+```{r warning=FALSE,echo=FALSE, fig.cap="*Clasificación de la imagen 2004*", out.width = '100%'}
+knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/clasi.png")
+```
+
+## Grado de Precisión de la Clasificación 
+
+La evaluación de precisión es el paso final en el análisis de los datos de teledetección. Ayuda a verificar la precisión de los resultados obtenidos. Se ha elegido la precisión general, el coeficiente Kappa y la precisión del productor y del usuario como evaluaciones cuantitativas para determinar la precisión final de la clasificación supervisada de la cubierta terrestre.
+
+
+### Overall Acuraccy (OA)
+La precisión general es la medida de precisión más simple y una de las más populares. Se calcula dividiendo el el número total de píxeles clasificados correctamente (es decir, la suma de la diagonal principal) por el número total de píxeles en la matriz de confusión (Congalton, 1991).
+
+$$
+Overall\ Accuracy\ (OA)=\frac{\sum{Diagonal}}{\sum{matrix}}
+$$
+
+### Índice Kappa
+Esta evaluación corrige la precisión general de las predicciones del modelo por la precisión que se espera que ocurra por casualidad:
+$$
+Kappa\ (K)=\frac{Overall\ accuracy-Chance\ Agreement}{1-chance\ agreement}
+$$
+*Overall Accuracy* =  Determinado por la diagonal principal de la matriz de confusión
+
+*Chance Agreement* =  Suma del producto de los totales de cada fila y columna divididos por el número total de pixeles muestreados para cada clase.
+
+### Precisión del productor y del usuario
+Se produce un error de clasificación cuando a un pixel perteneciente a una clase se le asigna una clase distinta. La precisón del Productor mide errores de omisión, es decir, cuando se excluye un pixel de la categoría que está siendo evaluada. En cambio, la precisión del usuario mide los errores de comisión, esto es, cuando se incluye un pixel incorrectamente en la categoría que está siendo evaluada.
+
+La precisión del productor (PA) se obtiene de dividir el número de píxeles correctamente clasificados en cada categoría (diagonal principal de la matriz de confusión) por el número de píxeles de referencia de esa categoría (el total de la columna): 
+$$
+Productor\ accuracy\ (PA)=\frac{Diagonal}{\sum{col}}
+$$
+Donde:
+
+* *Diagonal* = Valor de la columna perteneciente a la diagonal principal de la matriz de confusión
+* *∑col* = Suma de cada columna de la matriz de confusión
+
+Mientras que la precisión del usuario (UA) se calcula dividiendo el número de píxeles correctamente clasificados en cada categoría por el número total de píxeles que se clasificaron en esa categoría (el total de la fila):
+$$
+User\ accuracy\ (UA)=\frac{Diagonal}{\sum{row}}
+$$
+Donde:
+
+* *Diagonal* = Valor de la fila perteneciente a la diagonal principal de la matriz de confusión
+* *∑row* = Suma de cada fila de la matriz de confusión
+
+## Valores obtenidos de la Clasificación Supervisada
+A continuación adjuntamos el grado de precisión alcanzados con la clasificación supervisada utilizando el algoritmo de Random Forest.
+
+* Tabla de valores para la imagen del 2004
+
+| Imagen 2004  | Resultado (R.F) |
+| ------------- | ------------- |
+| OA    | 0.97   |
+| Kappa    | 0.95    |
+| Producers Acuraccy   | 0.95    |
+| Ucers Acuraccy   | 0.96    |
+
+* Tabla de valores para la imagen del 2018
+
+| Imagen 2018  | Resultado (R.F) |
+| ------------- | ------------- |
+| OA    | 0.94   |
+| Kappa    | 0.91    |
+| Producers Acuraccy   | 0.90    |
+| Ucers Acuraccy   | 0.92    |
+
+## Comparación de la superficie perdida
+Obtenida la clasificación, a continuación calculamos el área de las clases correspondientes para dar a mostrar de manera cuantitativa la varación en lo que respecta a cobertura vegetal; en la siguiente tabla podemos apreciar los valores hallados:
+
+|        | Área 2004 (km^2) | Área 2018 (km^2) | Variación (km^2)  |
+| ------------- | ------------- |------------- | ------------- |
+| Bosque    | 6033.93   |5191.07   | -842.860    |
+| Bosque dañado    | 333.04    |962.013   | +628.973    |
+
 
 # Conclusiones
 
 
-# Bibliografía
 
+
+
+# Referencias bibliográficas
+
+<div id="refs"></div>
 
 # Anexos
+
 
