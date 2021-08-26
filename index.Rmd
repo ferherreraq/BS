@@ -21,7 +21,7 @@ Dentro de GEE, se elaboró el code para este proyecto (JavaScript) y posterior a
 Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).
 
 # Marco teórico 
-
+ 
 
 # Resultados
 Luego de la clasificación supervisada
