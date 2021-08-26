@@ -102,6 +102,13 @@
             <section class="normal" id="section-">
 <div id="metodología" class="section level1">
 <h1><span class="header-section-number">Capítulo 2</span> Metodología</h1>
+<p>En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:
+-Forest
+-Damaged Forest
+-Water
+El proceso de clasificación supervisada fue realizado integramente en el code editor de Google Earth Engine (GEE), esta plataforma nos permite realizar todas las operaciones de una manera fácil y rápida, sin consumir recursos de nuestros ordenadores ya que todo el procesamiento es en la nube.
+Dentro de GEE, se elaboró el code para este proyecto (JavaScript) y posterior a esto se procedió a realizar la selección de puntos de entrenamiento (training points); luego a esto pudimos correr el algoritmo RF.
+Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).</p>
 </div>
             </section>
 

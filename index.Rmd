@@ -10,7 +10,7 @@ documentclass: book
 # Introducción
 La pérdida de la cobertura vegetal causada por las actividades antrópicas afecta directamente al clima, flora, fauna, suelo del lugar afectado. En el Parque Nacional Bahuaja Sonene; la perdida de cobertura vegetal es originado principalmente por actividades como la minera ilegal, deforestación para construír laboratorios del narcotráfico así como expansión de la frontera agrícola.
 En el presente trabajo usamos las técnicas de teledetección para calcular cuantitativamente el cambio y la pérdida de cobertura vegetal, se usa principalmente las imágenes de las misiones Landsat-5 y Landsat-8. Se realizó la clasificación tomando tres (3) clases (_forest, damaged_forest, water), añadido a esto se procedió a usar el algoritmo Random Forest (RF) dentro del servicio para editar códigos de Google Earth Engine (GEE). 
-
+ 
 # Metodología
 En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:
 -Forest
