@@ -24,7 +24,7 @@ Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos
 
 
 # Resultados
-
+Luego de la clasificación supervisada
 
 # Conclusiones
 
