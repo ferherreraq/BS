@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene</title>
-  <meta name="description" content="Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene" />
+  <title>Capítulo 3 Materiales y Métodos | Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene</title>
+  <meta name="description" content="Capítulo 3 Materiales y Métodos | Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene" />
+  <meta property="og:title" content="Capítulo 3 Materiales y Métodos | Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene" />
+  <meta name="twitter:title" content="Capítulo 3 Materiales y Métodos | Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introducción.html"/>
+<link rel="prev" href="introducción.html"/>
+<link rel="next" href="marco-teórico.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -141,23 +141,89 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja Sonene</h1>
-<p class="author"><em>Herrera Fernando, Gonzales Karen</em></p>
-<p class="date"><em>2021-08-27</em></p>
+<div id="materiales-y-métodos" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Materiales y Métodos</h1>
+<div id="datos" class="section level2">
+<h2><span class="header-section-number">3.1</span> Datos</h2>
+<div style="text-align: justify">
+<p>Para realizar el análisis multitemporal se utilizó datos espacio-temporales. Para el mapeo de cambios en la cobertura terrestre, los datos multiespectrales son necesarios, especialmente cuando se combinan con resoluciones espaciales y temporales de medianas a altas. Para ello se usó los conjuntos de datos abiertos y gratuitos que nos proporcionan las misiones Landsat. Para el presente trabajo se utilizó las imagenes multiespectrales de las misiones Landsat cinco y ocho.</p>
+<p><em>Tabla 3.1 Propiedades de los satélites</em></p>
+<table>
+<thead>
+<tr class="header">
+<th>Satélite</th>
+<th>Tiempo de Operación</th>
+<th>Año</th>
+<th>Resol. Espacial</th>
+<th>Bandas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Landsat 5</td>
+<td>1984 - 2012</td>
+<td>2000</td>
+<td>30 m</td>
+<td>1 (azul), 2 (verde), 3 (rojo), 4 (NIR)</td>
+</tr>
+<tr class="even">
+<td>Landsat 8</td>
+<td>2013-actualidad</td>
+<td>2015</td>
+<td>30 m</td>
+<td>2 (azul), 3(verde), 4(rojo), 5 (NIR)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Fuente: Elaboración propia</em></p>
 </div>
-<div id="resumen" class="section level1">
-<h1><span class="header-section-number">Capítulo 1</span> Resumen</h1>
+<div id="flujo-de-trabajo" class="section level2">
+<h2><span class="header-section-number">3.2</span> Flujo de Trabajo</h2>
 <div style="text-align: justify">
-<p>La deforestación de bosques a otro tipo de uso territorial o la reducción significativa a largo plazo de la cubierta forestal, incluye la conversión del bosque natural a plantaciones de árboles, agricultura, pastizales, reservas de agua y áreas urbanas. Los cambios dentro de los bosques afectan la estructura o función del área o lugar durante varias décadas, y, por lo tanto, reducen la capacidad del bosque para brindar productos y/o servicios ecosistémicos. El presente trabajo tuvo como objetivo el monitoreo de cambio forestal del año 2004 al año 2018 del área de la zona sur y la zona noroeste de la zona de amortiguamiento del Parque Nacional Bahuaja Sonene ubicada en los departamentos de Ucayali y Puno. La dinámica de la cobertura terrestre se mapeó en in intervalo de 14 años mediante el uso Random Forest siguiendo un modelo de clasificación supervisada en la plataforma de procesamiento en la nube de Google Earth Engine utilizando imágenes multiespectrales de las misiones Landsat cinco, ocho y Sentiel-2. Los resultados indicaron una vasta área de bosque dañado desde al año 2004 al año 2018, peridiendo 628.973 km2 de bosque.</p>
-<p>Palabras clave:
-<em>Deforestación, Detección de cambios forestales, Dinámica de cobertura terrestre, Plataforma Google Earth Engine, clasificación supervisada.</em></p>
-<div id="abstract" class="section level2">
-<h2><span class="header-section-number">1.1</span> Abstract</h2>
+<p>El flujo de trabajo se inició con el acceso de los datos satelitales y el filtrado de imágenes según los requerimientos de esta investigación. Se utilizó las imágenes de colección Landsat 5 y Landsat 8 level 1 ya que estas son las más decuadas para el análisis temporal del cambio de cobertura vegetal. Estos productos ya han sido corregidos radiométrica y atmosféricamente.</p>
+<p>El flujo de trabajo se divide en tres pasos principales:</p>
+<ol style="list-style-type: decimal">
+<li><p>Conjunto de datos de entrada</p></li>
+<li><p>Selección de puntos de entrenamiento para la clasificación supervisada de cobertura terrestre</p></li>
+<li><p>Análisis del cambio de cobertura vegetal</p></li>
+</ol>
+</div>
+<div id="metodología" class="section level2">
+<h2><span class="header-section-number">3.3</span> Metodología</h2>
 <div style="text-align: justify">
-<p>The deforestation of forests to another type of territorial use or the significant long-term reduction of forest cover, includes the conversion of natural forest to tree plantations, agriculture, grasslands, water reserves and urban areas. Changes within forests affect the structure or function of the area or place over several decades, and thus reduce the forest’s ability to provide ecosystem products and / or services. The objective of this work was to monitor forest change from 2004 to 2018 in the area of the southern zone and the northwest zone of the buffer zone of the Bahuaja Sonene National Park located in the departments of Ucayali and Puno. Land cover dynamics were mapped over a 14-year interval using Random Forest following a supervised classification model on the Google Earth Engine cloud processing platform using multispectral imagery from Landsat five, eight, and Sentiel missions. 2. The results indicated a vast area of forest damaged from 2004 to 2018, losing 628,973 km2 of forest.</p>
-<p>Keywords
-<em>Deforestation, Forest change detection, Land cover dynamics, Platform Google Earth Engine, Supervised classification.</em></p>
+<p>En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:
+-Forest
+-Damaged Forest
+-Water
+El proceso de clasificación supervisada fue realizado integramente en el code editor de Google Earth Engine (GEE), esta plataforma nos permite realizar todas las operaciones de una manera fácil y rápida, sin consumir recursos de nuestros ordenadores ya que todo el procesamiento es en la nube.
+Dentro de GEE, se elaboró el code para este proyecto (JavaScript) y posterior a esto se procedió a realizar la selección de puntos de entrenamiento (training points); luego a esto pudimos correr el algoritmo RF.
+Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).
+Metodología 1</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="image/metod1.png" alt="*Metodología general*" width="100%" />
+<p class="caption">
+Figure 3.1: <em>Metodología general</em>
+</p>
+</div>
+Luego se procedió a realizar los puntos de entrenamiento estratégicamente basados en nuestra inspección visual rigurosa.
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="image/metod2.png" alt="*Selección de puntos*" width="100%" />
+<p class="caption">
+Figure 3.2: <em>Selección de puntos</em>
+</p>
+</div>
+</div>
+<div id="plataforma-de-procesamiento" class="section level2">
+<h2><span class="header-section-number">3.4</span> Plataforma de procesamiento</h2>
+<div style="text-align: justify">
+<p>Se utilizó Google Earth Engine como plataforma de procesamiento en la nube. La plataforma combina una gran cantidad de conjuntos de datos satelitales y capacidades computacionales a escala planetaria; además, se puede acceder a ella de forma gratuita, con una previa inscripción, para científicos y usuarios sin fines de lucro. Los usuarios pueden ejecutar análisis geoespaciales y procesar imágenes de satélite u otros datos geoespaciales de la base de datos en la nube. El editor de código de Google Earth Engine es un IDE que se basa en la web de la Application Programming Interface (API) de Java Script de Earth Engine, las funciones de este editor de código están diseñadas para que el desarrollo de flujos de trabajo geoespaciales complejos sea y rápido y fácil.
+GEE posee una amplia base de datos geoespaciales que se han obtenido de numerosos institutos y satélites que está disponible para todos los usuarios, convirtiéndose así en un herramienta valiosa para analizar una variedad de problemas sociales de alto impacto, como el monitoreo del cambio forestal, sequías, desastres hidrogeológicos,gestión del agua, monitoreo del clima, entre otros estudios más.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="image/gee_logo.png" alt="*Google Earth Engine (GEE): Plataforma de Procesamiento, Code Editor*" width="20%" />
+<p class="caption">
+Figure 3.3: <em>Google Earth Engine (GEE): Plataforma de Procesamiento, Code Editor</em>
+</p>
+</div>
 </div>
 </div>
             </section>
@@ -165,8 +231,8 @@
           </div>
         </div>
       </div>
-
-<a href="introducción.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introducción.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="marco-teórico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

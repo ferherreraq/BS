@@ -9,11 +9,35 @@ bibliography: book.bib
 csl: apa.csl
 nocite: '@*'
 ---
+# Resumen
+<div style="text-align: justify">
+La deforestación de bosques a otro tipo de uso territorial o la reducción significativa a largo plazo de la cubierta forestal, incluye la conversión del bosque natural a plantaciones de árboles, agricultura, pastizales, reservas de agua y áreas urbanas. Los cambios dentro de los bosques afectan la estructura o función del área o lugar durante varias décadas, y, por lo tanto, reducen la capacidad del bosque para brindar productos y/o servicios ecosistémicos. El presente trabajo tuvo como objetivo el monitoreo de cambio forestal del año 2004 al año 2018 del área de la zona sur y la zona noroeste de la zona de amortiguamiento del Parque Nacional Bahuaja Sonene ubicada en los departamentos de Ucayali y Puno. La dinámica de la cobertura terrestre se mapeó en in intervalo de 14 años mediante el uso Random Forest siguiendo un modelo de clasificación supervisada en la plataforma de procesamiento en la nube de Google Earth Engine utilizando imágenes multiespectrales de las misiones Landsat cinco, ocho y Sentiel-2. Los resultados indicaron una vasta área de bosque dañado desde al año 2004 al año 2018, peridiendo 628.973 km2 de bosque.
+
+Palabras clave:
+*Deforestación, Detección de cambios forestales, Dinámica de cobertura terrestre, Plataforma Google Earth Engine, clasificación supervisada.*
+
+## Abstract
+<div style="text-align: justify">
+The deforestation of forests to another type of territorial use or the significant long-term reduction of forest cover, includes the conversion of natural forest to tree plantations, agriculture, grasslands, water reserves and urban areas. Changes within forests affect the structure or function of the area or place over several decades, and thus reduce the forest's ability to provide ecosystem products and / or services. The objective of this work was to monitor forest change from 2004 to 2018 in the area of the southern zone and the northwest zone of the buffer zone of the Bahuaja Sonene National Park located in the departments of Ucayali and Puno. Land cover dynamics were mapped over a 14-year interval using Random Forest following a supervised classification model on the Google Earth Engine cloud processing platform using multispectral imagery from Landsat five, eight, and Sentiel missions. 2. The results indicated a vast area of forest damaged from 2004 to 2018, losing 628,973 km2 of forest.
+
+Keywords
+*Deforestation, Forest change detection, Land cover dynamics, Platform Google Earth Engine, Supervised classification.*
 
 # Introducción
 <div style="text-align: justify">
-La pérdida de la cobertura vegetal causada por las actividades antrópicas afecta directamente al clima, flora, fauna, suelo del lugar afectado. En el Parque Nacional Bahuaja Sonene; la perdida de cobertura vegetal es originado principalmente por actividades como la minera ilegal, deforestación para construír laboratorios del narcotráfico así como expansión de la frontera agrícola.
-En el presente trabajo usamos las técnicas de teledetección para calcular cuantitativamente el cambio y la pérdida de cobertura vegetal, se usa principalmente las imágenes de las misiones Landsat-5 y Landsat-8. Se realizó la clasificación tomando tres (3) clases (_forest, damaged_forest, water), añadido a esto se procedió a usar el algoritmo Random Forest (RF) dentro del servicio para editar códigos de Google Earth Engine (GEE). 
+De acuerdo a Buttel, Hawkins y Power (1990) la deforestación significa la reducción a largo plazo de árboles debido, principalmente, a las actividades naturales o antropogénicas. 
+La selva amazónica representa aproximadamente la mitad de las selvas tropicales restantes del planeta y comprende un ecosistema que desempeña un papel crucial en la regulación del clima de la Tierra. Cambios relativamente pequeños en la cubierta forestal y la productividad podrían tener implicaciones importantes para el ciclo del carbono, las circulaciones atmosféricas, el  ciclo  hidrológico y el clima (Nepstad et al., 2008; Malhi et al., 2008).   Asimismo, los bosques, cumplen un rol clave en la mitigación y adaptación al cambio climático al proveer bienes y servicios ambientales de valor local, regional, nacional y global (FAO, 2016). Sin embargo, los bosques y el clima de la Amazonía están siendo amenazados por las tendencias sinérgicas en las economías, que podrían llevar a la sustitución o la degradación severa de más de la mitad de los bosques densos de la cuenca del río Amazonas en 2030 (Nepstad et al., 2008).
+
+Según la FAO (2015) el Perú es el segundo en sudamérica, y está entre los diez países con mayor densidad forestal del planeta. Sin embargo, para el año 2001 
+la deforestación anual fue de 830 km cuadrados, ya para el año 2014 superó los 1770 km cuadrados y se estima que para el año 2030 la deforestación exceda los 3500 km cuadrados (MINAM, 2016). 
+La pérdida de la cobertura vegetal causada por las actividades antrópicas afecta directamente al clima, flora, fauna, suelo del lugar afectado. En el Parque Nacional Bahuaja Sonene; la perdida de cobertura vegetal es originado principalmente por actividades como la minera ilegal, deforestación para construir laboratorios del narcotráfico, así como expansión de la frontera agrícola. De acuerdo a la Organización de las Naciones Unidas para la Alimentación y la Agricultura (2018), la tala ilegal y la producción y tráfico de la cocaína han arruinado durante años el Parque Nacional Bahuaja-Sonene, parque que tiene una extensión protegida de 10900 km cuadrados e incluye principalmente las selvas tropicales de la región de Puno en el sur de Perú, así como la parte sur de la región de Madre de Dios. 
+
+El uso del suelo y cambios de la cubierta del suelo ha sido una clave de investigación con impactos multidireccionales en sistemas naturales y antropizados (Chávez et. al, Dourojeanni, 2006; Perz et al., 2013). Los cambios de uso del suelo pueden afectar la biodiversidad de las reservas naturales cercanas a estos impactos, así como también las redes hídricas, suelo, entre otros (Rendon et al., 2013).
+Se propuso una clasificación supervisada en base a segmentos y el algoritmo Random Forest para el uso de diferentes arboles de decisión que pueden operar un gran número de variables.
+
+En el presente trabajo usamos las técnicas de teledetección para calcular cuantitativamente el cambio y la pérdida de cobertura vegetal, se usa principalmente las imágenes de las misiones Landsat-5 y Landsat-8. Se realizó la clasificación tomando tres (3) clases (forest, damaged_forest, water), añadido a esto se procedió a usar el algoritmo Random Forest (RF) dentro del servicio para editar códigos de Google Earth Engine (GEE).
+
+
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE, , results='markup', paged.print=TRUE}
 library(cptcity)
 library(raster)
@@ -32,31 +56,123 @@ Map$setCenter(-70.4, -12.85, zoom = 10)
 Map$addLayer(img1, geoviz, "IMG_2004")
 ```
 
+# Materiales y Métodos
+## Datos
+<div style="text-align: justify">
+Para realizar el análisis multitemporal se utilizó datos espacio-temporales. Para el mapeo de cambios en la cobertura terrestre, los datos multiespectrales son necesarios, especialmente cuando se combinan con resoluciones espaciales y temporales de medianas a altas. Para ello se usó los conjuntos de datos abiertos y gratuitos que nos proporcionan las misiones Landsat. Para el presente trabajo se utilizó las imagenes multiespectrales de las misiones Landsat cinco y ocho. 
 
+*Tabla 3.1 Propiedades de los satélites*
 
-# Metodología
+|Satélite | Tiempo de Operación  | Año  | Resol. Espacial  | Bandas  |
+| ------------- | ------------- |------------- | ------------- | ------------- |
+| Landsat 5    | 1984 - 2012    | 2000    | 30 m   | 1 (azul), 2 (verde), 3 (rojo), 4 (NIR)   | 
+| Landsat 8   | 2013-actualidad   | 2015    | 30 m    | 2 (azul), 3(verde), 4(rojo), 5 (NIR)  |
+*Fuente: Elaboración propia*
+
+## Flujo de Trabajo
+<div style="text-align: justify">
+El flujo de trabajo se inició con el acceso de los datos satelitales y el filtrado de imágenes según los requerimientos de esta investigación. Se utilizó las imágenes de colección Landsat 5 y Landsat 8 level 1 ya que estas son las más decuadas para el análisis temporal del cambio de cobertura vegetal. Estos productos ya han sido corregidos radiométrica y atmosféricamente.
+
+El flujo de trabajo se divide en tres pasos principales:
+ 
+  1. Conjunto de datos de entrada
+ 
+  2. Selección de puntos de entrenamiento para la clasificación supervisada de cobertura terrestre
+ 
+  3. Análisis del cambio de cobertura vegetal
+
+## Metodología
 <div style="text-align: justify">
 En este estudio utilizamos imágenes de las misiones Landsat, cabe mencionar que utilizamos las imágenes de Level 1-C que son las que tienen el pre-procesamiento correctamente realizado para el trabajo que nos compete. Añadido a esto utilizamos el algoritmo Random Forest que nos permite realizar la clasificación supervisada de las clases:
-
-* Forest
-* Damaged Forest
-* Water
-
+-Forest
+-Damaged Forest
+-Water
 El proceso de clasificación supervisada fue realizado integramente en el code editor de Google Earth Engine (GEE), esta plataforma nos permite realizar todas las operaciones de una manera fácil y rápida, sin consumir recursos de nuestros ordenadores ya que todo el procesamiento es en la nube.
 Dentro de GEE, se elaboró el code para este proyecto (JavaScript) y posterior a esto se procedió a realizar la selección de puntos de entrenamiento (training points); luego a esto pudimos correr el algoritmo RF.
 Para evitar el sesgo y alcanzar la precisión requerida en este tipo de trabajos se realizó la matriz de confusión y los índices correspondientes (Producer y Kappa).
 Metodología 1 
-```{r pressure, echo=FALSE, fig.cap="*Metodología general*", out.width = '100%'}
+
+```{r, echo=FALSE, fig.cap="*Metodología general*", out.width = '100%'}
 knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/metod1.png")
 ```
+
 Luego se procedió a realizar los puntos de entrenamiento estratégicamente basados en nuestra inspección visual rigurosa.
 ```{r warning=FALSE,echo=FALSE, fig.cap="*Selección de puntos*", out.width = '100%'}
 knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/metod2.png")
 ```
 
+## Plataforma de procesamiento
+<div style="text-align: justify">
+Se utilizó Google Earth Engine como plataforma de procesamiento en la nube. La plataforma combina una gran cantidad de conjuntos de datos satelitales y capacidades computacionales a escala planetaria; además, se puede acceder a ella de forma gratuita, con una previa inscripción, para científicos y usuarios sin fines de lucro. Los usuarios pueden ejecutar análisis geoespaciales y procesar imágenes de satélite u otros datos geoespaciales de la base de datos en la nube. El editor de código de Google Earth Engine es un IDE que se basa en la web de la Application Programming Interface (API) de Java Script de Earth Engine, las funciones de este editor de código están diseñadas para que el desarrollo de flujos de trabajo geoespaciales complejos sea y rápido y fácil. 
+GEE posee una amplia base de datos geoespaciales que se han obtenido de numerosos institutos y satélites que está disponible para todos los usuarios, convirtiéndose así en un herramienta valiosa para analizar una variedad de problemas sociales de alto impacto, como el monitoreo del cambio forestal, sequías, desastres hidrogeológicos,gestión del agua, monitoreo del clima, entre otros estudios más.
+
+```{r warning=FALSE,echo=FALSE, fig.align="center", fig.cap="*Google Earth Engine (GEE): Plataforma de Procesamiento, Code Editor*", out.width = '20%'}
+
+knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/gee_logo.png")
+
+```
 
 # Marco teórico 
 
+## Bosque
+<div style="text-align: justify">
+Superficie mínima de tierras de entre 0.05 y 1.0 hectáreas (ha) con una cubierta de copas (o una densidad de población equivalente) que excede del 10 al 30% y con árboles que pueden alcanzar una altura mínima de entre 2 y 5 metros (m) a su madurez in situ. Los bosques amazónicos son un gran depósito de biodiversidad y funcionan como sumideros de carbono de la biomasa que se acumula en varias especies de árboles. (Ureta, 2015)
+
+## Deforestación
+<div style="text-align: justify">
+Es la pérdida de bosques o masa forestal, causada por la actividad humana, principalmente por la industria maderera y de transformación, la tala indiscriminada para ganar tierras en la agricultura, uso de leña, construcción de carreteras, incendios, entre otros generando desequilibrio ecológico, pérdida de la biodiversidad e incremento en el calentamiento del planeta; o también la deforestación es el proceso de pérdida de los bosques o masas forestales, fundamentalmente causada por la actividad humana, tala o quema de árboles accidental o provocada. Está directamente causada por la acción del hombre sobre la naturaleza, principalmente debido a las talas realizadas por la industria maderera, así como para la obtención de suelo para la agricultura
+
+## Random Forest
+<div style="text-align: justify">
+De acuerdo a Breiman (2001), los bosques aleatorios son una combinación de predictores de árboles de manera que cada árbol depende de los valores de un vector aleatorio muestreado de forma independiente y con la misma distribución para todos los árboles del bosque. El error de generalización para los bosques converge en un límite a medida que aumenta el número de árboles en el bosque.l
+
+## Clasificación Supervisada
+<div style="text-align: justify">
+La Clasificación Supervisada de datos, es el proceso que se lleva a cabo para encontrar propiedades comunes entre un conjunto de datos y clasificarlos dentro de diferentes clases, de acuerdo a un modelo de clasificación. El objetivo de la clasificación es primero desarrollar una descripción o modelo para cada clase usando las características disponibles en los datos. Tales descripciones de las clases son entonces usadas para clasificar futuros datos de prueba en la base de datos o para desarrollar mejores descripciones (llamadas reglas de descripción) para cada clase en la base de datos. (García, A., Martínez, G.,Nuñez, E. y Guzman, A., 1998)
+
+## Motor Google Earth Engine
+<div style="text-align: justify">
+Google Earth Engine (GEE) es una plataforma de computación en la nube diseñada para almacenar y procesar grandes conjuntos de datos (a escala de petabytes) para el análisis y la toma de decisiones finales [ 1 ]. Tras la disponibilidad gratuita de la serie Landsat en 2008, Google archivó todos los conjuntos de datos y los vinculó al motor de computación en la nube para uso de código abierto. El archivo actual de datos incluye aquellos de otros satélites, así como conjuntos de datos vectoriales basados en sistemas de información geográfica (GIS), modelos sociales, demográficos, meteorológicos, digitales de elevación y capas de datos climáticos. (Mutanga, O., Kumar, L., 2019)
+
+## Uso y cobertura de Tierra
+<div style="text-align: justify">
+El suelo es uno de los recursos naturales más importantes, del cual dependen tanto la vida como diversas actividades de desarrollo (George et al., 2016). La cobertura edáfica y las conversiones del uso del suelo se deben a las actividades socioeconómicas, que conducen a cambios en aspectos biofísicos y en factores ambientales.(Overmars et al., 2005).
+
+
+
+# Área de estudio
+## Ubicación del Parque Nacional Bahuaja Sonene
+
+El Parque Nacional Bahuaja Sonene (PBNS) está ubicado en las provincias de Tambopata, Carabaya y Sandia; entre los departamentos de Madre de Dios y Puno. 
+
+1. Provincia de Carabaya: Dentro de los distritos de Ayapata, Coasa y San Gabán.
+
+2. Provincia de Sandia: Parte de los distritos de San Pedro de Putina Punco, Limbani y Alto Inanbari (Massiapo), (Selva Alta de la Región de Madre de Dios).
+
+3. Provincia de Tambopata: Distrito Inambarí (Selva Baja).
+
+Límites:
+
+ * Por el norte: Con la Reserva Nacional de Tambopata (Región de Madre de Dios).
+ 
+ * Por el sur: Con los distritos de la provincia de Sandia (Región Puno)
+ 
+ * Por el Este: Con el Parque Nacional Madini (Bolivia).
+ 
+ * Por el Oeste: Con los distritos de la provincia de Carabaya (Región Puno).   
+
+## Creación del Parque Bahuaja Sonene 
+<div style="text-align: justify">
+El Parque Nacional Bahuaja Sonene, se estableció el 17 de Julio de 1996 , con la incorporación total del área comprendida por el Santuario Nacional Pampas del Heath (SNPH) y parte de la Zona Reservada Tambopata Candamo.  Abarcando una superficie inicial de 537053.25 ha. El 05 de setiembre del año 2000 se amplía el área a 1091416 ha como extensión territorial total del Parque Nacional Bahuaja Sonene
+
+## Zona de Estudio 
+<div style="text-align: justify">
+El área de estudio se ubica principalmente en el norte y sur de la zona de amortiguamiento del Parque Nacional Bahuaja Sonene. Esta área protegida se encuentra en peligro principalmente por dos causas: minería ilegal y tráfico de drogas; consecuencia de ello es la deforestación.
+La principal motivación para la elección de esta área de estudio se basa en los antecedentes que vienen siendo registrados por las autoridades competentes en su cuidado y conservación. David araníbar, director del Parque Nacional Bahuaja Sonene confirmó que la minería ilegal está presente a lo largo de todo el río Inambarí (extremo sur del parque), el cual funciona como límite natural a lo largo de la zona de amortiguamiento del parque nacional; asimismo, en la zona noroeste del área protegida, cerca de 5 km2 de tierra tradicional de Kotsimba han sido deforestadas en y a lo largo de las orillas del río Malinowski como consecuencia también de la minería ilegal
+
+```{r pressure, echo=FALSE, fig.cap="*Área de estudio en la zona de amortiguamiento del Parque Nacional Bahuaja Sonene*", out.width = '100%'}
+knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/ubi.png")
+```
 
 # Resultados
 <div style="text-align: justify">
