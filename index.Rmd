@@ -53,11 +53,13 @@ geoviz <- list(bands = c("B3", "B2", "B1"),
                gamma = 1.4
                )
 
-Map$setCenter(-70.4, -12.85, zoom = 10)
+Map$setCenter(-70.35527,-12.80511, zoom = 10)
 Map$addLayer(img1, geoviz, "IMG_2004")
 ```
 
+
 # Antecedentes
+
 <div style="text-align: justify">
 De acuerdo a informes presentados por el Parque Nacional Bahuaja Sonene la tala ilegal y la producción y tráfico de cocaína ha venido deforestando áreas colindantes a la zona de amortiguamiento del área protegida. Además, según la Oficina de las Naciones Unidas contra Droga y el Delito (UNODC), el parque posee la mayor cantidad de coca cultivada ilegalmente a nivel mundial dentro de un área protegida: 118 hectáreas. Las autoridades informan que producto del tráfico de drogas, alrededor de 473 hectáreas han sido deforestadas dentro del parque.
 En el año 2017, la procuraduría provincial especializada en materia ambiental indentificó 18 puntos de minería ilegal adyacentes a la zona de amortiguamiento del parque; debido a la minería ilegal cerca de 5 kilometros cuadrados de tierra perteneciente a la comunidad nativa Kotsimba ha sido deforestada, esencialmente a las orillas del río Malinowski. Consecuencia de ellos se ha generado un gran impacto negativo en la población de nutrias gigantes del río (*Pteronura brasiliens*) de la zona, desplazando así a este especie hacia el río Heath, única parte del río que no tiene amenaza de la minería.
@@ -67,6 +69,7 @@ En el año 2017, la procuraduría provincial especializada en materia ambiental 
 knitr::include_graphics("image/alertas_deforestacion.png")
 
 ```
+
 
 # Materiales y Métodos
 ## Datos
@@ -110,7 +113,7 @@ geoviz2 <- list(bands = c("B4", "B3", "B2"),
                 gamma = 1.4)
 shp <- ee$FeatureCollection('users/fer/shape_aoi')
 
-Map$setCenter(-70.4, -12.85, zoom = 8)
+Map$setCenter(-70.10, -12.80, zoom = 9)
 Map$addLayer(img_1, geoviz, "Imagen 2004")+
   Map$addLayer(img_2, geoviz2, "Imagen 2018")+
   Map$addLayer(shp, name = "AOI")
@@ -143,7 +146,7 @@ viz<-list(palette=c("#d73027", "#f46d43","#fdae61",
                     "#fee08b","#d9ef8b","#a6d96a",
                     "#66bd63","#1a9850"))
 
-Map$setCenter(-70.11, -12.77, zoom = 9)
+Map$setCenter(-70.10, -12.80, zoom = 9)
 Map$addLayer(clip2, viz, "NDVI_Imagen 2018")+
     Map$addLayer(clip1, viz, "NDVI_Imagen 2004")
 ```
