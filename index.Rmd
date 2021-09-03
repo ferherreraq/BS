@@ -53,7 +53,7 @@ geoviz <- list(bands = c("B3", "B2", "B1"),
                gamma = 1.4
                )
 
-Map$setCenter(-70.35527,-12.80511, zoom = 10)
+Map$setCenter(-70.35527,-12.80511, zoom = 9)
 Map$addLayer(img1, geoviz, "IMG_2004")
 ```
 
@@ -113,7 +113,7 @@ geoviz2 <- list(bands = c("B4", "B3", "B2"),
                 gamma = 1.4)
 shp <- ee$FeatureCollection('users/fer/shape_aoi')
 
-Map$setCenter(-70.10, -12.80, zoom = 10)
+Map$setCenter(-70.10, -12.80, zoom = 9)
 Map$addLayer(img_2, geoviz2, "Imagen 2018")+
   Map$addLayer(img_1, geoviz, "Imagen 2004")+
   Map$addLayer(shp, name = "AOI")
@@ -146,7 +146,7 @@ viz<-list(palette=c("#d73027", "#f46d43","#fdae61",
                     "#fee08b","#d9ef8b","#a6d96a",
                     "#66bd63","#1a9850"))
 
-Map$setCenter(-70.10, -12.80, zoom = 10)
+Map$setCenter(-70.10, -12.80, zoom = 9)
 Map$addLayer(clip1, viz, "NDVI_Imagen 2004")+
     Map$addLayer(clip2, viz, "NDVI_Imagen 2018")
 ```
