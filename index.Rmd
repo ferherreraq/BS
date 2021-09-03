@@ -36,7 +36,7 @@ La pérdida de la cobertura vegetal causada por las actividades antrópicas afec
 El uso del suelo y cambios de la cubierta del suelo ha sido una clave de investigación con impactos multidireccionales en sistemas naturales y antropizados (Chávez et. al, Dourojeanni, 2006; Perz et al., 2013). Los cambios de uso del suelo pueden afectar la biodiversidad de las reservas naturales cercanas a estos impactos, así como también las redes hídricas, suelo, entre otros (Rendon et al., 2013).
 Se propuso una clasificación supervisada en base a segmentos y el algoritmo Random Forest para el uso de diferentes arboles de decisión que pueden operar un gran número de variables.
 
-En el presente trabajo usamos las técnicas de teledetección para calcular cuantitativamente el cambio y la pérdida de cobertura vegetal, se usa principalmente las imágenes de las misiones Landsat-5 y Landsat-8. Se realizó la clasificación tomando tres (3) clases (forest, damaged_forest, water), añadido a esto se procedió a usar el algoritmo Random Forest (RF) dentro del servicio para editar códigos de Google Earth Engine (GEE).
+En el presente trabajo usamos las técnicas de teledetección para calcular cuantitativamente el cambio y la pérdida de cobertura vegetal, se usa principalmente las imágenes de las misiones Landsat-5 y Landsat-8. Se realizó la clasificación tomando tres (3) clases (forest, damaged_forest, water), añadido a esto se procedió a usar el algoritmo Random Forest _(RF)_ dentro del servicio para editar códigos de Google Earth Engine _(GEE)_.
 
 
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE, , results='markup', paged.print=TRUE}
