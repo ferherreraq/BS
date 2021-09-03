@@ -24,6 +24,7 @@ Keywords
 *Deforestation, Forest change detection, Land cover dynamics, Platform Google Earth Engine, Supervised classification.*
 
 # Introducción
+
 <div style="text-align: justify">
 De acuerdo a Buttel, Hawkins y Power (1990) la deforestación significa la reducción a largo plazo de árboles debido, principalmente, a las actividades naturales o antropogénicas. 
 La selva amazónica representa aproximadamente la mitad de las selvas tropicales restantes del planeta y comprende un ecosistema que desempeña un papel crucial en la regulación del clima de la Tierra. Cambios relativamente pequeños en la cubierta forestal y la productividad podrían tener implicaciones importantes para el ciclo del carbono, las circulaciones atmosféricas, el  ciclo  hidrológico y el clima (Nepstad et al., 2008; Malhi et al., 2008).   Asimismo, los bosques, cumplen un rol clave en la mitigación y adaptación al cambio climático al proveer bienes y servicios ambientales de valor local, regional, nacional y global (FAO, 2016). Sin embargo, los bosques y el clima de la Amazonía están siendo amenazados por las tendencias sinérgicas en las economías, que podrían llevar a la sustitución o la degradación severa de más de la mitad de los bosques densos de la cuenca del río Amazonas en 2030 (Nepstad et al., 2008).
@@ -56,6 +57,17 @@ Map$setCenter(-70.4, -12.85, zoom = 10)
 Map$addLayer(img1, geoviz, "IMG_2004")
 ```
 
+# Antecedentes
+<div style="text-align: justify">
+De acuerdo a informes presentados por el Parque Nacional Bahuaja Sonene la tala ilegal y la producción y tráfico de cocaína ha venido deforestando áreas colindantes a la zona de amortiguamiento del área protegida. Además, según la Oficina de las Naciones Unidas contra Droga y el Delito (UNODC), el parque posee la mayor cantidad de coca cultivada ilegalmente a nivel mundial dentro de un área protegida: 118 hectáreas. Las autoridades informan que producto del tráfico de drogas, alrededor de 473 hectáreas han sido deforestadas dentro del parque.
+En el año 2017, la procuraduría provincial especializada en materia ambiental indentificó 18 puntos de minería ilegal adyacentes a la zona de amortiguamiento del parque; debido a la minería ilegal cerca de 5 kilometros cuadrados de tierra perteneciente a la comunidad nativa Kotsimba ha sido deforestada, esencialmente a las orillas del río Malinowski. Consecuencia de ellos se ha generado un gran impacto negativo en la población de nutrias gigantes del río (*Pteronura brasiliens*) de la zona, desplazando así a este especie hacia el río Heath, única parte del río que no tiene amenaza de la minería.
+
+```{r warning=FALSE,echo=FALSE, fig.align="center", fig.cap="*Alertas de Deforestación, Zona de Amortiguamiento: Frontera del Parque Nacional Bahuaja Sonene*", out.width = '90%'}
+
+knitr::include_graphics("image/alertas_deforestacion.png")
+
+```
+
 # Materiales y Métodos
 ## Datos
 <div style="text-align: justify">
@@ -68,6 +80,73 @@ Para realizar el análisis multitemporal se utilizó datos espacio-temporales. P
 | Landsat 5    | 1984 - 2012    | 2000    | 30 m   | 1 (azul), 2 (verde), 3 (rojo), 4 (NIR)   | 
 | Landsat 8   | 2013-actualidad   | 2015    | 30 m    | 2 (azul), 3(verde), 4(rojo), 5 (NIR)  |
 *Fuente: Elaboración propia*
+
+### Imágenes
+Las dos imágenes utilizadas en esta investigación cuentan con el procesamiento correspondiente: _Corrección radiométrica (valores de reflectancia); corrección atmosférica y corrección ortométrica_. Estas imágenes son las Landsat 5 y Landsat 8, Tier 1 Surflace Reflectance
+
+| ID  | Descripción |
+| ------------- | ------------- |
+| LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814   | Imagen del año 2004   |
+| LANDSAT/LC08/C01/T1_SR/LC08_003069_20180906   | Imagen del año 2018  |
+
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE, , results='markup', paged.print=TRUE}
+library(cptcity)
+library(raster)
+library(stars)
+library(sf)
+library(rgee)
+ee_Initialize("FHerrera")
+img_1 <- ee$Image("LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814")
+img_2 <- ee$Image("LANDSAT/LC08/C01/T1_SR/LC08_003069_20180906")
+
+geoviz <- list(bands = c("B3", "B2", "B1"),
+               min = 50,
+               max = 3000,
+               gamma = 1.4
+)
+geoviz2 <- list(bands = c("B4", "B3", "B2"),
+                min = 0,
+                max = 3000,
+                gamma = 1.4)
+shp <- ee$FeatureCollection('users/fer/shape_aoi')
+
+Map$setCenter(-70.4, -12.85, zoom = 8)
+Map$addLayer(img_1, geoviz, "Imagen 2004")+
+  Map$addLayer(img_2, geoviz2, "Imagen 2018")+
+  Map$addLayer(shp, name = "AOI")
+
+```
+
+## Índices 
+<div style="text-align: justify">
+Para una mejor identificación de las diferentes clases de cobertura de suelo, utilizamos los índices de vegetación para la discriminación de estas.
+A continuación realizamos un visualizador del NDVI para el área de interés de los años 2004 y 2018 respectivamente.
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(raster)
+library(stars)
+library(sf)
+library(rgee)
+
+ee_Initialize("FHerrera")
+
+img_1 <- ee$Image("LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814")
+img_2 <- ee$Image("LANDSAT/LC08/C01/T1_SR/LC08_003069_20180906")
+
+ndvi1 <- img_1$normalizedDifference(c("B4","B3"))
+ndvi2 <- img_2$normalizedDifference(c("B5", "B4"))
+shp <- ee$FeatureCollection('users/fer/shape_aoi')
+clip1 <- ndvi1$clip(shp)
+clip2 <- ndvi2$clip(shp)
+
+viz<-list(palette=c("#d73027", "#f46d43","#fdae61",
+                    "#fee08b","#d9ef8b","#a6d96a",
+                    "#66bd63","#1a9850"))
+
+Map$setCenter(-70.11, -12.77, zoom = 9)
+Map$addLayer(clip2, viz, "NDVI_Imagen 2018")+
+    Map$addLayer(clip1, viz, "NDVI_Imagen 2004")
+```
 
 ## Flujo de Trabajo
 <div style="text-align: justify">
@@ -178,7 +257,7 @@ knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/ubi.png")
 <div style="text-align: justify">
 Utilizando las imágenes:
 
-* Imagen correspondiente al año 2004  _(LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814_
+* Imagen correspondiente al año 2004  _(LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814)_
 
 * Imagen correspondiente al año 2018 
 _(LANDSAT/LC08/C01/T1_SR/LC08_003069_20180906)_
@@ -202,9 +281,14 @@ El código realizado fue hecho dentro de la plataforma Google Earth Engine y lo 
 -- [Código Bahuaja Sonene - Gonzales y Herrera](https://code.earthengine.google.com/7883cf590175699625d1ccb88752cb79). 
 
 Como su propio nombre indica, Random Forest consiste en una gran cantidad de árboles de decisión individuales que operan como un conjunto. Este algoritmo puede ser menos sensible al ruido y puede ser más eficiente que otros clasificadores no paramétricos de uso común, como las máquinas de soporte vectorial (Pelletier et al., 2016). Se han utilizado 1510 puntos ubicados uniformemente dentro de todo el área de estudio. El mapa de clasificación predicho mediante el modelo obtenido por el algoritmo Random Forest se muestra a continuación:
-```{r warning=FALSE,echo=FALSE, fig.cap="*Clasificación de la imagen 2004*", out.width = '100%'}
-knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/clasi.png")
+
+```{r image_grobs, echo=FALSE, fig.align="default", fig.show="hold", message=FALSE, warning=FALSE, out.width="50%"}
+
+knitr::include_graphics("image/clasi.png")
+knitr::include_graphics("image/clasi_2018.png")
+
 ```
+Fuente: Elaboración Propia. _Izquierda (Imagen Clasificada 2004); Derecha (Imagen Clasificada 2018)_
 
 ## Grado de Precisión de la Clasificación 
 
@@ -279,6 +363,11 @@ Obtenida la clasificación, a continuación calculamos el área de las clases co
 
 
 # Conclusiones
+<div style="text-align: justify">
+
+- Para una clasificación supervisada es necesario trabajar con una imagen de bajo porcentaje de nubosidad, esto debido a que cuando se requiera colocar los puntos de entrenamiento es necesario visualizar el terreno, si tenemos una imagen con alto porcentaje de nubosidad será un inconveniente para detectar las zonas de interes, en nuestro caso, áreas deforestadas.
+
+- Del año 2004 al año 2018 la pérdida de cobertura boscosa ha sido significativa, pasando de 333.04 a 962.013 kilometros cuadrados de bosque dañado, de ello se colige que las actividades de minería ilegal y tráfico de drogas no han cesado, sino que al contrario estas han ido avanzando hasta penetrar zonas del área protegida, ademas se evidenció que las zonas mas afectadas son las orillas del río Malinowski evidenciando también contaminación de este cuerpo de agua.
 
 
 
@@ -290,4 +379,93 @@ Obtenida la clasificación, a continuación calculamos el área de las clases co
 
 # Anexos
 
+## Código Realizado (JavaScript)
+El siguiente código fue realizado en el editor de código de la plataforma Google Earth Engine. Los puntos de entrenamiento para su recreación lo pueden adquirir en el siguiente link:
 
+* [Código Bahuaja Sonene - Gonzales y Herrera](https://code.earthengine.google.com/7883cf590175699625d1ccb88752cb79). 
+
+```{JS Código Gonzales-Herrera-PN.Bahuaja Sonene, eval=FALSE, include=TRUE}
+//Explorando ImageCollection
+var l8 = ee.ImageCollection("LANDSAT/LC08/C01/T1_SR")
+.filterDate('2018-01-01', '2018-12-31')
+.filterBounds(roi)
+.sort('CLOUD_COVER')
+.first();
+print('Collection: ', l8);
+var visParamsTrue = {bands :['B3', 'B2', 'B1'], min:0, max:3000, gamma:1.4};
+var image = ee.Image("LANDSAT/LT05/C01/T1_SR/LT05_003069_20040814")
+var image2004 = image.clip(roi)
+Map.addLayer(image2004, visParamsTrue, "Img_2004");
+Map.centerObject(roi);
+//Data-training
+var label = 'CLASS'
+var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B7']
+var input = image2004.select(bands);
+
+var entrenamiento = damage_forest.merge(water).merge(forest);
+print(entrenamiento);
+
+//Points into image -> training
+var trainImage = input.sampleRegions({
+  collection: entrenamiento,
+  properties: [label],
+  scale: 30
+});
+print("Imagen Entrenada con Bandas",trainImage);
+
+var trainingData = trainImage.randomColumn();
+var trainSet = trainingData.filter(ee.Filter.lessThan('random', 0.8));
+var testSet = trainingData.filter(ee.Filter.greaterThanOrEquals('random', 0.8));
+
+//Modelo Classify "Random Forest" -> Aprendizaje basado en árboles de decisión
+var algoritmo = ee.Classifier.smileRandomForest(10).train(trainSet, label, bands);
+
+//Imagen clasification
+var clasificacion = input.classify(algoritmo);
+print("Clasificación (RandomForest):", clasificacion.getInfo())
+
+//colors representation
+var paleta = [
+  '#3182bd', //water(0)
+  '#31a354', //forest(1)
+  '#de2d26', //damage_forest(2)
+];
+Map.addLayer(clasificacion, {palette: paleta, min:0, max:2}, 'classification')
+
+//Overall Accuracy
+var conf = ee.ConfusionMatrix(testSet.classify(algoritmo)
+.errorMatrix({
+  actual : 'CLASS',
+  predicted : 'classification'
+}));
+print('Matriz de Confusión:', conf);
+print('Overall Accuracy:', conf.accuracy());
+print('Índice Kappa:', conf.kappa());
+print('Producers Accuracy:', conf.producersAccuracy());
+print('Users Accuracy:', conf.consumersAccuracy());
+
+//Area classified
+var nombre = ['water','forest', 'damage_forest']
+var renombre = clasificacion.eq([0,1,2]).rename(nombre)
+var area = renombre.multiply(ee.Image.pixelArea().divide(1e6));
+var areaclase = area.reduceRegion({
+  reducer: ee.Reducer.sum(),
+  geometry: image2004.geometry(),
+  crs: 'EPSG:32619',
+  scale: 30,
+  maxPixels: 1E16
+  });
+var areatotal = ee.Number(areaclase)
+print('Área km^2:',areatotal)
+
+
+
+//Descarga img classified
+Export.image.toDrive({
+  image: clasificacion,
+  description: 'Landsat8_CART_2018',
+  scale: 30,
+  region: image2004.geometry(),
+  maxPixels: 1E10
+});
+```

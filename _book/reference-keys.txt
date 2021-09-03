@@ -60,3 +60,11 @@ creación-del-parque-bahuaja-sonene
 zona-de-estudio
 clasificación-supervisada-1
 fig:unnamed-chunk-6
+código-realizado-javascript
+fig:unnamed-chunk-7
+imágenes
+fig:unnamed-chunk-7-1
+fig:unnamed-chunk-7-2
+índices
+antecedentes
+fig:unnamed-chunk-8
