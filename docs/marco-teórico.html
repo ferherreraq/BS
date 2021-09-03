@@ -164,10 +164,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="marco-teórico.html"><a href="marco-teórico.html"><i class="fa fa-check"></i><b>5</b> Marco teórico</a><ul>
 <li class="chapter" data-level="5.1" data-path="marco-teórico.html"><a href="marco-teórico.html#bosque"><i class="fa fa-check"></i><b>5.1</b> Bosque</a></li>
 <li class="chapter" data-level="5.2" data-path="marco-teórico.html"><a href="marco-teórico.html#deforestación"><i class="fa fa-check"></i><b>5.2</b> Deforestación</a></li>
-<li class="chapter" data-level="5.3" data-path="marco-teórico.html"><a href="marco-teórico.html#random-forest"><i class="fa fa-check"></i><b>5.3</b> Random Forest</a></li>
-<li class="chapter" data-level="5.4" data-path="marco-teórico.html"><a href="marco-teórico.html#clasificación-supervisada"><i class="fa fa-check"></i><b>5.4</b> Clasificación Supervisada</a></li>
-<li class="chapter" data-level="5.5" data-path="marco-teórico.html"><a href="marco-teórico.html#motor-google-earth-engine"><i class="fa fa-check"></i><b>5.5</b> Motor Google Earth Engine</a></li>
-<li class="chapter" data-level="5.6" data-path="marco-teórico.html"><a href="marco-teórico.html#uso-y-cobertura-de-tierra"><i class="fa fa-check"></i><b>5.6</b> Uso y cobertura de Tierra</a></li>
+<li class="chapter" data-level="5.3" data-path="marco-teórico.html"><a href="marco-teórico.html#índice-de-vegetación-de-diferencia-normalizada-ndvi"><i class="fa fa-check"></i><b>5.3</b> Índice de Vegetación de Diferencia Normalizada (NDVI)</a></li>
+<li class="chapter" data-level="5.4" data-path="marco-teórico.html"><a href="marco-teórico.html#random-forest"><i class="fa fa-check"></i><b>5.4</b> Random Forest</a></li>
+<li class="chapter" data-level="5.5" data-path="marco-teórico.html"><a href="marco-teórico.html#clasificación-supervisada"><i class="fa fa-check"></i><b>5.5</b> Clasificación Supervisada</a></li>
+<li class="chapter" data-level="5.6" data-path="marco-teórico.html"><a href="marco-teórico.html#motor-google-earth-engine"><i class="fa fa-check"></i><b>5.6</b> Motor Google Earth Engine</a></li>
+<li class="chapter" data-level="5.7" data-path="marco-teórico.html"><a href="marco-teórico.html#uso-y-cobertura-de-tierra"><i class="fa fa-check"></i><b>5.7</b> Uso y cobertura de Tierra</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="área-de-estudio.html"><a href="área-de-estudio.html"><i class="fa fa-check"></i><b>6</b> Área de estudio</a><ul>
 <li class="chapter" data-level="6.1" data-path="área-de-estudio.html"><a href="área-de-estudio.html#ubicación-del-parque-nacional-bahuaja-sonene"><i class="fa fa-check"></i><b>6.1</b> Ubicación del Parque Nacional Bahuaja Sonene</a></li>
@@ -222,23 +223,31 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div style="text-align: justify">
 <p>Es la pérdida de bosques o masa forestal, causada por la actividad humana, principalmente por la industria maderera y de transformación, la tala indiscriminada para ganar tierras en la agricultura, uso de leña, construcción de carreteras, incendios, entre otros generando desequilibrio ecológico, pérdida de la biodiversidad e incremento en el calentamiento del planeta; o también la deforestación es el proceso de pérdida de los bosques o masas forestales, fundamentalmente causada por la actividad humana, tala o quema de árboles accidental o provocada. Está directamente causada por la acción del hombre sobre la naturaleza, principalmente debido a las talas realizadas por la industria maderera, así como para la obtención de suelo para la agricultura</p>
 </div>
+<div id="índice-de-vegetación-de-diferencia-normalizada-ndvi" class="section level2">
+<h2><span class="header-section-number">5.3</span> Índice de Vegetación de Diferencia Normalizada (NDVI)</h2>
+<div style="text-align: justify">
+<p>Uno de los índices de vegetación más conocido y usado es el Índice Normalizado Diferencial de Vegetación, por sus siglas NDVI Normalized Difference Vegetation Index. Este índice fue introducido con el objetivo de separar la vegetación del brillo que produce el suelo (Rouse et al., 1974).
+El NDVI, se basa en el peculiar comportamiento radiométrico de la vegetación, relacionado con la actividad fotosintética y la estructura foliar de las plantas, permitiendo determinar la vigorosidad de la planta.
+Los valores del NDVI están en función de la energía absorbida o reflejada por las plantas en diversas partes del espectro electromagnético. La respuesta espectral que tiene la vegetación sana, muestra un claro contraste entre el espectro del visible, especialmente la banda roja, y el Infrarrojo Cercano (NIR). Mientras que en el visible los pigmentos de la hoja absorben la mayor parte de la energía que reciben, en el NIR, las paredes de las células de las hojas, que se encuentran llenas de agua, reflejan la mayor cantidad de energía. En contraste, cuando la vegetación sufre algún tipo de estrés, ya sea por presencia de plagas o por sequía, la cantidad de agua disminuye en las paredes celulares por lo que la reflectividad disminuye el NIR y aumenta paralelamente en el rojo al tener menor absorción clorofílica. Esta diferencia en la respuesta espectral permite separar con relativa facilidad la vegetación sana de otras cubiertas.</p>
+<p><span class="math display">\[NDVI = (NIR-RED)/(NIR+RED)\]</span></p>
+</div>
 <div id="random-forest" class="section level2">
-<h2><span class="header-section-number">5.3</span> Random Forest</h2>
+<h2><span class="header-section-number">5.4</span> Random Forest</h2>
 <div style="text-align: justify">
 <p>De acuerdo a Breiman (2001), los bosques aleatorios son una combinación de predictores de árboles de manera que cada árbol depende de los valores de un vector aleatorio muestreado de forma independiente y con la misma distribución para todos los árboles del bosque. El error de generalización para los bosques converge en un límite a medida que aumenta el número de árboles en el bosque.l</p>
 </div>
 <div id="clasificación-supervisada" class="section level2">
-<h2><span class="header-section-number">5.4</span> Clasificación Supervisada</h2>
+<h2><span class="header-section-number">5.5</span> Clasificación Supervisada</h2>
 <div style="text-align: justify">
 <p>La Clasificación Supervisada de datos, es el proceso que se lleva a cabo para encontrar propiedades comunes entre un conjunto de datos y clasificarlos dentro de diferentes clases, de acuerdo a un modelo de clasificación. El objetivo de la clasificación es primero desarrollar una descripción o modelo para cada clase usando las características disponibles en los datos. Tales descripciones de las clases son entonces usadas para clasificar futuros datos de prueba en la base de datos o para desarrollar mejores descripciones (llamadas reglas de descripción) para cada clase en la base de datos. (García, A., Martínez, G.,Nuñez, E. y Guzman, A., 1998)</p>
 </div>
 <div id="motor-google-earth-engine" class="section level2">
-<h2><span class="header-section-number">5.5</span> Motor Google Earth Engine</h2>
+<h2><span class="header-section-number">5.6</span> Motor Google Earth Engine</h2>
 <div style="text-align: justify">
 <p>Google Earth Engine (GEE) es una plataforma de computación en la nube diseñada para almacenar y procesar grandes conjuntos de datos (a escala de petabytes) para el análisis y la toma de decisiones finales [ 1 ]. Tras la disponibilidad gratuita de la serie Landsat en 2008, Google archivó todos los conjuntos de datos y los vinculó al motor de computación en la nube para uso de código abierto. El archivo actual de datos incluye aquellos de otros satélites, así como conjuntos de datos vectoriales basados en sistemas de información geográfica (GIS), modelos sociales, demográficos, meteorológicos, digitales de elevación y capas de datos climáticos. (Mutanga, O., Kumar, L., 2019)</p>
 </div>
 <div id="uso-y-cobertura-de-tierra" class="section level2">
-<h2><span class="header-section-number">5.6</span> Uso y cobertura de Tierra</h2>
+<h2><span class="header-section-number">5.7</span> Uso y cobertura de Tierra</h2>
 <div style="text-align: justify">
 <p>El suelo es uno de los recursos naturales más importantes, del cual dependen tanto la vida como diversas actividades de desarrollo (George et al., 2016). La cobertura edáfica y las conversiones del uso del suelo se deben a las actividades socioeconómicas, que conducen a cambios en aspectos biofísicos y en factores ambientales.(Overmars et al., 2005).</p>
 </div>
