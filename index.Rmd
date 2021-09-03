@@ -201,10 +201,12 @@ knitr::include_graphics("C:/Users/Usuario/Desktop/BS/image/gee_logo.png")
 Superficie mínima de tierras de entre 0.05 y 1.0 hectáreas (ha) con una cubierta de copas (o una densidad de población equivalente) que excede del 10 al 30% y con árboles que pueden alcanzar una altura mínima de entre 2 y 5 metros (m) a su madurez in situ. Los bosques amazónicos son un gran depósito de biodiversidad y funcionan como sumideros de carbono de la biomasa que se acumula en varias especies de árboles. (Ureta, 2015)
 
 ## Deforestación
+
 <div style="text-align: justify">
 Es la pérdida de bosques o masa forestal, causada por la actividad humana, principalmente por la industria maderera y de transformación, la tala indiscriminada para ganar tierras en la agricultura, uso de leña, construcción de carreteras, incendios, entre otros generando desequilibrio ecológico, pérdida de la biodiversidad e incremento en el calentamiento del planeta; o también la deforestación es el proceso de pérdida de los bosques o masas forestales, fundamentalmente causada por la actividad humana, tala o quema de árboles accidental o provocada. Está directamente causada por la acción del hombre sobre la naturaleza, principalmente debido a las talas realizadas por la industria maderera, así como para la obtención de suelo para la agricultura
 
 ## Índice de Vegetación de Diferencia Normalizada (NDVI)
+
 <div style="text-align: justify">
 Uno de los índices de vegetación más conocido y usado es el Índice Normalizado Diferencial de Vegetación, por sus siglas NDVI Normalized Difference Vegetation Index. Este índice fue introducido con el objetivo de separar la vegetación del brillo que produce el suelo (Rouse et al., 1974).
 El NDVI, se basa en el peculiar comportamiento radiométrico de la vegetación, relacionado con la actividad fotosintética y la estructura foliar de las plantas, permitiendo determinar la vigorosidad de la planta.
