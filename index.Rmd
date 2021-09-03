@@ -204,6 +204,14 @@ Superficie mínima de tierras de entre 0.05 y 1.0 hectáreas (ha) con una cubier
 <div style="text-align: justify">
 Es la pérdida de bosques o masa forestal, causada por la actividad humana, principalmente por la industria maderera y de transformación, la tala indiscriminada para ganar tierras en la agricultura, uso de leña, construcción de carreteras, incendios, entre otros generando desequilibrio ecológico, pérdida de la biodiversidad e incremento en el calentamiento del planeta; o también la deforestación es el proceso de pérdida de los bosques o masas forestales, fundamentalmente causada por la actividad humana, tala o quema de árboles accidental o provocada. Está directamente causada por la acción del hombre sobre la naturaleza, principalmente debido a las talas realizadas por la industria maderera, así como para la obtención de suelo para la agricultura
 
+## Índice de Vegetación de Diferencia Normalizada (NDVI)
+<div style="text-align: justify">
+Uno de los índices de vegetación más conocido y usado es el Índice Normalizado Diferencial de Vegetación, por sus siglas NDVI Normalized Difference Vegetation Index. Este índice fue introducido con el objetivo de separar la vegetación del brillo que produce el suelo (Rouse et al., 1974).
+El NDVI, se basa en el peculiar comportamiento radiométrico de la vegetación, relacionado con la actividad fotosintética y la estructura foliar de las plantas, permitiendo determinar la vigorosidad de la planta.
+Los valores del NDVI están en función de la energía absorbida o reflejada por las plantas en diversas partes del espectro electromagnético. La respuesta espectral que tiene la vegetación sana, muestra un claro contraste entre el espectro del visible, especialmente la banda roja, y el Infrarrojo Cercano (NIR). Mientras que en el visible los pigmentos de la hoja absorben la mayor parte de la energía que reciben, en el NIR, las paredes de las células de las hojas, que se encuentran llenas de agua, reflejan la mayor cantidad de energía. En contraste, cuando la vegetación sufre algún tipo de estrés, ya sea por presencia de plagas o por sequía, la cantidad de agua disminuye en las paredes celulares por lo que la reflectividad disminuye el NIR y aumenta paralelamente en el rojo al tener menor absorción clorofílica. Esta diferencia en la respuesta espectral permite separar con relativa facilidad la vegetación sana de otras cubiertas.
+
+$$NDVI = (NIR-RED)/(NIR+RED)$$
+
 ## Random Forest
 <div style="text-align: justify">
 De acuerdo a Breiman (2001), los bosques aleatorios son una combinación de predictores de árboles de manera que cada árbol depende de los valores de un vector aleatorio muestreado de forma independiente y con la misma distribución para todos los árboles del bosque. El error de generalización para los bosques converge en un límite a medida que aumenta el número de árboles en el bosque.l
