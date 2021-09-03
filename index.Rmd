@@ -205,7 +205,9 @@ Superficie mínima de tierras de entre 0.05 y 1.0 hectáreas (ha) con una cubier
 <div style="text-align: justify">
 Es la pérdida de bosques o masa forestal, causada por la actividad humana, principalmente por la industria maderera y de transformación, la tala indiscriminada para ganar tierras en la agricultura, uso de leña, construcción de carreteras, incendios, entre otros generando desequilibrio ecológico, pérdida de la biodiversidad e incremento en el calentamiento del planeta; o también la deforestación es el proceso de pérdida de los bosques o masas forestales, fundamentalmente causada por la actividad humana, tala o quema de árboles accidental o provocada. Está directamente causada por la acción del hombre sobre la naturaleza, principalmente debido a las talas realizadas por la industria maderera, así como para la obtención de suelo para la agricultura
 
-## Índice de Vegetación de Diferencia Normalizada  _(NDVI)_
+
+
+## Índice de Vegetación de Diferencia Normalizada _(NDVI)_
 
 <div style="text-align: justify">
 Uno de los índices de vegetación más conocido y usado es el Índice Normalizado Diferencial de Vegetación, por sus siglas NDVI Normalized Difference Vegetation Index. Este índice fue introducido con el objetivo de separar la vegetación del brillo que produce el suelo (Rouse et al., 1974).
@@ -371,9 +373,11 @@ Obtenida la clasificación, a continuación calculamos el área de las clases co
 
 |        | Área 2004 (km^2) | Área 2018 (km^2) | Variación (km^2)  |
 | ------------- | ------------- |------------- | ------------- |
-| Bosque    | 6033.93   |5191.07   | -842.860    |
-| Bosque dañado    | 333.04    |962.013   | +628.973    |
+| Bosque    | 6086.1   |5262.9   | -823.2   |
+| Bosque dañado    | 252.6    |1018.8   | +766.2    |
+| Río    | 174.2    |231.2     | +56.8    |
 
+- Área total estudiada: *_6 512.9 kilómetros cuadrados_*
 
 # Conclusiones
 <div style="text-align: justify">
