@@ -69,3 +69,5 @@ fig:unnamed-chunk-7-2
 antecedentes
 fig:unnamed-chunk-8
 índice-de-vegetación-de-diferencia-normalizada-ndvi
+section
+índice-normalizado-diferencial-de-vegetación-ndvi

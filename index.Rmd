@@ -205,7 +205,7 @@ Superficie mínima de tierras de entre 0.05 y 1.0 hectáreas (ha) con una cubier
 <div style="text-align: justify">
 Es la pérdida de bosques o masa forestal, causada por la actividad humana, principalmente por la industria maderera y de transformación, la tala indiscriminada para ganar tierras en la agricultura, uso de leña, construcción de carreteras, incendios, entre otros generando desequilibrio ecológico, pérdida de la biodiversidad e incremento en el calentamiento del planeta; o también la deforestación es el proceso de pérdida de los bosques o masas forestales, fundamentalmente causada por la actividad humana, tala o quema de árboles accidental o provocada. Está directamente causada por la acción del hombre sobre la naturaleza, principalmente debido a las talas realizadas por la industria maderera, así como para la obtención de suelo para la agricultura
 
-## Índice de Vegetación de Diferencia Normalizada (NDVI)
+## Índice de Vegetación de Diferencia Normalizada  _(NDVI)_
 
 <div style="text-align: justify">
 Uno de los índices de vegetación más conocido y usado es el Índice Normalizado Diferencial de Vegetación, por sus siglas NDVI Normalized Difference Vegetation Index. Este índice fue introducido con el objetivo de separar la vegetación del brillo que produce el suelo (Rouse et al., 1974).
@@ -378,10 +378,15 @@ Obtenida la clasificación, a continuación calculamos el área de las clases co
 # Conclusiones
 <div style="text-align: justify">
 
-- Para una clasificación supervisada es necesario trabajar con una imagen de bajo porcentaje de nubosidad, esto debido a que cuando se requiera colocar los puntos de entrenamiento es necesario visualizar el terreno, si tenemos una imagen con alto porcentaje de nubosidad será un inconveniente para detectar las zonas de interes, en nuestro caso, áreas deforestadas.
-
 - Del año 2004 al año 2018 la pérdida de cobertura boscosa ha sido significativa, pasando de 333.04 a 962.013 kilometros cuadrados de bosque dañado, de ello se colige que las actividades de minería ilegal y tráfico de drogas no han cesado, sino que al contrario estas han ido avanzando hasta penetrar zonas del área protegida, ademas se evidenció que las zonas mas afectadas son las orillas del río Malinowski evidenciando también contaminación de este cuerpo de agua.
 
+- Para una clasificación supervisada es necesario trabajar con una imagen de bajo porcentaje de nubosidad, esto debido a que cuando se requiera colocar los puntos de entrenamiento es necesario visualizar el terreno, si tenemos una imagen con alto porcentaje de nubosidad será un inconveniente para detectar las zonas de interes, en nuestro caso, áreas deforestadas.
+
+- De acuerdo al índice NDVI que se realizó tanto para las imagenes del año 2004 y el año 2018, se muestra que el deterioro de la cobertura vegetal ha avanzado, siguiendo los colores utilizados para la clasificación de NDVI el color rojo/naranja nos indica los cuerpos de agua, el color amarillo cobertura vegetal dañada y el color verde vegetación sana. Para el año 2004 se observa que los daños a la cobertura vegetal se encuentran en mayor medida cerca al rio Malinowski; ocupado todo su recorrido dentro de nuestra zona de estudio y para el año 2018 el daño no solo persiste sino que ha avanzado ocupando mas zonas y modificando incluso el curso del río. 
+
+- Se concluye además,que los índices Overall Accuracity, Índice Kappa y Producers Accuracy resultaron en valores altos, lo que nos indica que nuestros valores obtenidos tienen una buena precisión; sin embargo, al no llegar al 100% estos presentan un margen de error al momento de validar nuestros datos con la realidad, por ello se hace hincapie en la importancia de verficación insitu a través del trabajo de campo. 
+
+- Finalmente colegimos que la cobertura boscosa viene siendo deforestada de manera significativa de tal forma que se ha atrevasado la zona de amortiguamiento, entrando así a áreas del Parque Nacional Bahuaja Sonene, degradando los suelos y dejando nefastas consecuencias en la flora y fauna del lugar, provocando que estas en estado de peligro debido a que su hábitat natural es alterado.
 
 
 
