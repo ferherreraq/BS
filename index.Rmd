@@ -1,7 +1,7 @@
 --- 
 title: Análisis multitemporal de la cobertura vegetal en el Parque Nacional Bahuaja
   Sonene
-author: "Herrera Fernando, Gonzales Karen"
+author: "Herrera Fernando, Gonzales Karen, Pinedo Thania, Medrano Alisson"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
